@@ -24,6 +24,7 @@ export const MyImage = ({ nr,loading,setLoading }) => {
               Loading...
             </Spinner>
         }
+
       <img
         style={{
           width: "50%",
