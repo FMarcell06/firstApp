@@ -5,6 +5,7 @@ import { Counter } from "./components/Counter";
 import { useState } from "react";
 import { Toggle } from "./components/Toggle";
 import { Todo } from "./components/Todo";
+import { Gallery } from "./components/Gallery";
 
 function App() {
   const [selected,setSelected] = useState(null)
@@ -20,11 +21,15 @@ function App() {
         <Button onClick={()=>setSelected("todo")} color="success" outline={selected!="todo"}>
           Todo
         </Button>{" "}
+        <Button onClick={()=>setSelected("gallery")} color="info" outline={selected!="gallery"}>
+          Gallery
+        </Button>{" "}
 
       </div>
     {selected=="counter" &&<Counter/>}
     {selected=='toggle' && <Toggle/>}
     {selected=="todo"&&<Todo/>}
+    {selected=="gallery"&&<Gallery/>}
     </div>
 
   )
