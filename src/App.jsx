@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Toggle } from "./components/Toggle";
 import { Todo } from "./components/Todo";
 import { Gallery } from "./components/Gallery";
+import { Frameworks } from "./components/Frameworks";
 
 function App() {
   const [selected,setSelected] = useState(null)
@@ -24,12 +25,12 @@ function App() {
         <Button onClick={()=>setSelected("gallery")} color="info" outline={selected!="gallery"}>
           Gallery
         </Button>{" "}
-
       </div>
     {selected=="counter" &&<Counter/>}
     {selected=='toggle' && <Toggle/>}
     {selected=="todo"&&<Todo/>}
     {selected=="gallery"&&<Gallery/>}
+    {!selected && <Frameworks/>}
     </div>
 
   )

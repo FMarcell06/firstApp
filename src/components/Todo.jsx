@@ -1,10 +1,11 @@
 import React from "react";
 import { todosData } from "../data";
 import { useState } from "react";
-import { ListGroup, ListGroupItem } from "reactstrap";
+import { Button, ListGroup, ListGroupItem } from "reactstrap";
 import { IoTrashOutline } from "react-icons/io5";
 import { FaCheck } from "react-icons/fa6";
 import { NewTodo } from "./NewTodo";
+import { TodoSummary } from "./TodoSummary";
 
 export const Todo = () => {
   const [todos, setTodos] = useState(todosData);
@@ -23,9 +24,22 @@ export const Todo = () => {
         
   }
 
+  const clearTodos=()=>{
+    setTodos([])
+  }
+
+  const handleAdd=(descr)=>{
+    const newTodo={id: Date.now(),
+      descr,
+      done:false
+    }
+    setTodos(prev=>[...prev,newTodo])
+  }
+
   return (
     <div style={{maxWidth:"600px", display:"flex",alignItems:"center",flexDirection:"column",margin:"auto"}}>
-      <NewTodo/>
+      <NewTodo handleAdd={handleAdd}/>
+      <Button onClick={clearTodos}><IoTrashOutline style={{color:"red",fontSize:"2rem"}}/></Button>
       <ListGroup>
         {todos.map((obj) => (
           <ListGroupItem key={obj.id} className="d-flex gap-1 jusify-content-between align-items-center">
@@ -37,6 +51,7 @@ export const Todo = () => {
           </ListGroupItem>
         ))}
       </ListGroup>
+      <TodoSummary todos={todos}/>
     </div>
   );
 };

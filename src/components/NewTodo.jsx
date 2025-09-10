@@ -2,12 +2,13 @@ import React from 'react'
 import { useState } from 'react'
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap'
 
-export const NewTodo = () => {
+export const NewTodo = ({handleAdd}) => {
     const [descr,setDescr] = useState("")
     console.log("renderelodik a NewTodo: ",descr);
     
     const handleSubmit =()=>{
-
+        handleAdd(descr)
+        setDescr("")
     }
 
     return (
@@ -21,7 +22,7 @@ export const NewTodo = () => {
                         onChange={(e)=>setDescr(e.target.value)}
                     />
                 </FormGroup>
-                <Button onClick={handleSubmit()}>Add</Button>
+                <Button onClick={handleSubmit} disabled={!descr}>Add</Button>
             </Form>
 
         </div>
